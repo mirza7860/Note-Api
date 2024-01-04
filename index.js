@@ -1,6 +1,12 @@
 //Run with `node index.js`
-//"/" => Documentation 
-//Hosted on digitalocean App Platform
+
+//Test With Postman 
+//- Test All Routes . Here -  https://www.postman.com/mirzasahil/workspace/note-crud-auth-api/overview
+
+//- Publish Postman Documentation Link - https://documenter.getpostman.com/view/32121402/2s9YsFFaLp
+
+//Hosted on digitalocean App Platform - LInk - 
+ 
 import dotenv from "dotenv";
 import { DBConnect } from "./DB/DBConnect.js";
 import { RunServer } from "./App.js";
