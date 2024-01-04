@@ -5,7 +5,7 @@
 
 //- Publish Postman Documentation Link - https://documenter.getpostman.com/view/32121402/2s9YsFFaLp
 
-//Hosted on digitalocean App Platform - LInk - 
+//Hosted on digitalocean App Platform - LInk - https://walrus-app-ymnbm.ondigitalocean.app
  
 import dotenv from "dotenv";
 import { DBConnect } from "./DB/DBConnect.js";
