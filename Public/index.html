@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: rgb(255, 255, 255);
+        }
+    
+        a {
+            color: black;
+            background-color: antiquewhite;
+        }
+    
+        h1 {
+            text-align: center;
+        }
+    
+        h2 {
+            margin-bottom: 10px;
+        }
+    
+        pre {
+            background-color: #c3ebe3;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    
+        code {
+            font-family: Monaco, monospace;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+    <h1>Note API - CRUD Api With Authentication</h1>
+    <h1> BaseURL : </h1>
+    <h2>Want to run it in local server . <a href="">Github</a></h2>
+    <h2>Get the proper implementation and example with <a
+            href="https://documenter.getpostman.com/view/32121402/2s9YsFFaLp">POSTMAN</a></h2>
+    <h3>Want to know about me ? Here is <a href="https://sahil-portfolio-omega.vercel.app/">My Portfolio</a></h3>
+    <section>
+        <h2>User Register</h2>
+        <h3>Request</h3>
+        <h4>Endpoint: POST http://localhost:8000/api/v1/user/register</h4>
+        <pre>
+          <code class="language-json">
+            {
+              "userName": "MirzaSahil",
+              "password": "Sahil#786",
+              "email": "Sahil@gmail.com"
+            }
+          </code>
+        </pre>
+
+        <h3>Response</h3>
+        <pre>
+          <code class="language-json">
+            {
+              "status": 201,
+              "response": {
+                "newUser": {
+                  "userName": "MirzaSahil",
+                  "email": "Sahil@gmail.com",
+                  "password": "Sahil#786",
+                  "notes": [],
+                  "_id": "6595eda8a2282260b72b255d",
+                  "createdAt": "2024-01-03T23:28:40.591Z",
+                  "updatedAt": "2024-01-03T23:28:40.591Z",
+                  "__v": 0
+                },
+                "Suggestion": "Registration Successful. Redirect to login."
+              }
+            }
+          </code>
+        </pre>
+    </section>
+    <section>
+        <h2>User Login</h2>
+        <h3>Request</h3>
+        <h4>Endpoint: POST http://localhost:8000/api/v1/user/login</h4>
+        <pre>
+      <code class="language-json">
+        {
+          "userName": "MirzaSahil",
+          "password": "Sahil#786",
+          "email": "Sahil@gmail.com"
+        }
+      </code>
+    </pre>
+
+        <h3>Response</h3>
+        <pre>
+      <code class="language-json">
+        {
+          "status": 200,
+          "response": {
+            "message": "Login successful"
+          }
+        }
+      </code>
+    </pre>
+    </section>
+
+    <section>
+        <h2>User Logout</h2>
+        <h3>Request</h3>
+        <h4>Endpoint: POST http://localhost:8000/api/v1/user/logout</h4>
+        <pre>
+      <code class="language-json">
+        {Credential : include}
+      </code>
+    </pre>
+
+        <h3>Response</h3>
+        <pre>
+      <code class="language-json">
+        {
+          "status": 200,
+          "response": "Logout successful. Thanks for visiting"
+        }
+      </code>
+    </pre>
+    </section>
+
+    <section>
+        <h2>Create Note</h2>
+        <h3>Request</h3>
+        <h4>Endpoint: POST http://localhost:8000/api/v1/app/notes</h4>
+        <pre>
+      <code class="language-json">
+        {
+          "title": "TODO",
+          "content": "I have to complete by 4th January 2024."
+        }
+      </code>
+    </pre>
+
+        <h3>Response</h3>
+        <pre>
+      <code class="language-json">
+        {
+          "status": 201,
+          "response": {
+            "newNote": {
+              "title": "TODO",
+              "content": "I have to complete by 4th January 2024.",
+              "userName": "6595f13d0de3ab11a3c3fde5",
+              "_id": "65960225c157a6bb399a4879",
+              "date": "2024-01-04T00:56:05.955Z",
+              "createdAt": "2024-01-04T00:56:05.962Z",
+              "updatedAt": "2024-01-04T00:56:05.962Z",
+              "__v": 0
+            }
+          }
+        }
+      </code>
+    </pre>
+    </section>
+
+    <section>
+        <h2>Get All Notes</h2>
+        <h3>Request</h3>
+        <h4>Endpoint: GET http://localhost:8000/api/v1/app/notes</h4>
+        <pre>
+      <code class="language-json">
+        No Auth Needed . Anyone can see .
+      </code>
+    </pre>
+        <h3>Response</h3>
+        <pre>
+      <code class="language-json">
+        {
+          "status": 200,
+          "response": {
+            "notes": [
+              {
+                "_id": "6595ff31cd0d41c510443237",
+                "title": "TODO",
+                "content": "I have to complete by 4th January 2024.",
+                "userName": {
+                  "_id": "6595f13d0de3ab11a3c3fde5",
+                  "userName": "MirzaSahil"
+                },
+                "date": "2024-01-04T00:43:29.138Z",
+                "createdAt": "2024-01-04T00:43:29.147Z",
+                "updatedAt": "2024-01-04T00:43:29.147Z",
+                "__v": 0
+              },
+              // ... (other notes)
+            ]
+          }
+        }
+      </code>
+    </pre>
+    </section>
+    <section>
+        <h2>User Notes</h2>
+        <h3>Request</h3>
+        <h4>Endpoint: GET http://localhost:8000/api/v1/app/notes/:userId</h4>
+        <pre>
+            <code class="language-json">
+                Include user credentials in the request as backend get to know about user details from cookies . 
+            </code>
+        </pre>
+        <h3>Response</h3>
+        <pre>
+          <code class="language-json">
+            {
+              "status": 200,
+              "response": {
+                "data": [
+                  {
+                    "_id": "6595ff31cd0d41c510443237",
+                    "title": "TODO",
+                    "content": "I have to complete by 4th January 2024.",
+                    "userName": {
+                      "_id": "6595f13d0de3ab11a3c3fde5",
+                      "userName": "MirzaSahil"
+                    },
+                    "date": "2024-01-04T00:43:29.138Z",
+                    "createdAt": "2024-01-04T00:43:29.147Z",
+                    "updatedAt": "2024-01-04T00:43:29.147Z",
+                    "__v": 0
+                  },
+                  // ... (other notes)
+                ]
+              }
+            }
+          </code>
+        </pre>
+    </section>
+
+    <section>
+        <h2>Update Note</h2>
+        <h3>Request</h3>
+        <h4>Endpoint: PATCH http://localhost:8000/api/v1/app/notes/:noteId</h4>
+        <pre>
+          <code class="language-json">
+            {
+              "title": "TODO",
+              "content": "I have updated by 4th January 2024."
+            }
+          </code>
+        </pre>
+        <h3>Response</h3>
+        <pre>
+            <code class="language-json">
+                {
+                "status": 200,
+                "response": {
+                "message": "Note is updated successfully."
+                }
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section>
+        <h2>Delete Note</h2>
+        <h3>Request</h3>
+        <h4>Endpoint: DELETE http://localhost:8000/api/v1/app/notes/:noteId</h4>
+        <pre>
+          <code class="language-json">
+            <pre>
+                        <code class="language-json">
+                            Include user credentials in the request as backend get to know about user details from cookies . 
+                        </code>
+                    </pre>
+        </code>
+        </pre>
+
+        <h3>Response</h3>
+        <pre>
+          <code class="language-json">
+            {
+              "status": 200,
+              "response": {
+                "message": "Note is deleted successfully."
+              }
+            }
+          </code>
+        </pre>
+    </section>
+
+</body>
+
+</html>
+
+
+    
